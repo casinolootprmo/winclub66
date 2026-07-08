@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIN CLUB | VIP ACCESS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --neon-red: #ff003c; --bg-gradient: #0d0d0d; }
+        
+        body { 
+            background: var(--bg-gradient); 
+            color: white; 
+            font-family: 'Outfit', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 20px;
+        }
+
+        .container { width: 100%; max-width: 420px; text-align: center; }
+
+        /* Premium Poster */
+        .poster-wrapper {
+            position: relative;
+            padding: 4px;
+            background: linear-gradient(45deg, var(--neon-red), #550014);
+            border-radius: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(255, 0, 60, 0.4);
+        }
+        .poster-img { width: 100%; border-radius: 20px; display: block; }
+
+        /* Grid Layout */
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        
+        .channel-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px; border-radius: 20px;
+            transition: 0.4s;
+        }
+
+        .join-btn {
+            display: block; margin-top: 10px; padding: 10px;
+            background: #fff; color: #000; border-radius: 12px;
+            font-weight: 900; font-size: 11px; text-decoration: none;
+            transition: 0.3s;
+        }
+        .join-btn:hover { background: var(--neon-red); color: white; }
+        .joined { background: #222 !important; color: #555 !important; }
+
+        /* Referral Section */
+        #referral-section { display: none; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 25px; border: 1px solid #333; }
+        .link-box { background: #000; padding: 15px; border-radius: 12px; margin: 15px 0; border: 1px solid var(--neon-red); font-size: 13px; color: var(--neon-red); }
+        .copy-btn { width: 100%; padding: 15px; background: var(--neon-red); color: white; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; }
+
+        .cont-btn { width: 100%; padding: 18px; background: transparent; border: 2px solid #333; color: #555; border-radius: 15px; font-weight: 900; }
+        .cont-btn.active { border-color: var(--neon-red); color: white; box-shadow: 0 0 20px rgba(255,0,60,0.5); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="poster-wrapper">
+        <img src="https://github.com/casinolootprmo/symmetrical-funicular/blob/1ca133648f1abed8788d38b01847383e72510f68/file_00000000c800722f8aacca7ab8805e2c.png?raw=true" class="poster-img">
+    </div>
+
+    <div id="task-section">
+        <div class="grid-container" id="channel-list"></div>
+        <button class="cont-btn" id="verify-btn" disabled>VERIFY TASKS</button>
+    </div>
+
+    <div id="referral-section">
+        <h2 style="margin-top:0;">Almost There!</h2>
+        <p style="color:#aaa; font-size: 14px;">Invite 10 friends to unlock the game.</p>
+        <div class="link-box" id="link-text">https://casinolootprmo.github.io/winclub6/</div>
+        <button class="copy-btn" onclick="copyLink()">COPY INVITE LINK </button>
+    </div>
+</div>
+
+<script>
+    const channels = [
+        "https://t.me/+SaP-xwToutZiNDhl",
+        "https://t.me/+xgtZDjPmUw0xYjdl",
+        "https://t.me/+tWIv0AL7enE1ODI1",
+        "https://t.me/+MktGS8Gi30oxZDQ1",
+        "https://t.me/+tzKF8wzgo7E2N2Nl",
+        "https://t.me/+8M_WKqKxlW44NTBl",
+        "https://t.me/+YuIuxFYaHOkxOWZl",
+        "https://t.me/+-BF-oC67lzg1Yjc1",
+        "https://t.me/+sDb28Vr76RpiNjI9",
+        "https://t.me/+Xtajcp-pJZ1jOTE1",
+        "https://t.me/+YV2MB--kbYMxNzRl",
+        "https://t.me/+r72-luRvSXUyOTA9"
+    ];
+    
+    const list = document.getElementById('channel-list');
+    const joined = new Set();
+
+    channels.forEach((link, i) => {
+        list.innerHTML += `<div class="channel-card" id="c-${i}">
+            <div style="font-size:10px; opacity:0.6;">CHANNEL</div>
+            <div style="font-weight:900; margin:5px 0;">0${i+1}</div>
+            <a href="${link}" target="_blank" class="join-btn" onclick="mark(${i})">JOIN</a>
+        </div>`;
+    });
+
+    function mark(i) {
+        joined.add(i);
+        const card = document.getElementById(`c-${i}`);
+        card.querySelector('.join-btn').innerHTML = 'JOINED';
+        card.querySelector('.join-btn').classList.add('joined');
+        if (joined.size === channels.length) {
+            const b = document.getElementById('verify-btn');
+            b.classList.add('active'); b.disabled = false;
+        }
+    }
+
+    document.getElementById('verify-btn').onclick = () => {
+        document.getElementById('task-section').style.display = 'none';
+        document.getElementById('referral-section').style.display = 'block';
+    }
+
+    function copyLink() {
+        navigator.clipboard.writeText("https://casinolootprmo.github.io/winclub66/");
+        alert("Link Copied! Share with 10 friends.");
+    }
+</script>
+</body>
+</html>
